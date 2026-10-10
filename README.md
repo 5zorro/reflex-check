@@ -8,7 +8,7 @@ It would be like SSO which is currently used to annoy everyone but keep hacks do
 
 My vision for this app: It is a game, and if you hook it up to a car with software/hardware, 
 then this could act like a objective external "you are dangerous, but still can use your car
-x% kind of device.
+X% kind of device".
 
 As only the "phone game" part is developed, ill describe that: 
 1 Take a one-minute check (establishes sober baseline and/or compares against sober baseline). 
@@ -19,7 +19,7 @@ far off your normal, it tells you not to drive.
 
 It's built for anyone whose reactions might be off: older drivers, tired drivers, people prone 
 to health flare ups, and people who've been drinking or using. It's based on the classic "Pilot 
-Trainer" shape game ([echalk / edSLAP](https://www.edslap.com/amusements/Games/pilotTrainer/pilotTrainer.html).
+Trainer" shape game ([echalk / edSLAP](https://www.edslap.com/amusements/Games/pilotTrainer/pilotTrainer.html)).
 
 > **Not a medical or legal device.** It can't detect alcohol or drugs. A good score
 > never means you're safe or legal to drive. The design is one-way: it can tell you
