@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#111418">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Reflex Check</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HOME -->
+  <section id="screen-home" class="screen active">
+    <header class="top">
+      <h1>Reflex Check</h1>
+      <p class="sub">A quick reaction &amp; coordination check before you drive.</p>
+    </header>
+
+    <div id="status-card" class="card status"></div>
+
+    <div class="stack">
+      <button class="btn primary" data-action="check">Run check</button>
+      <button class="btn" data-action="calibrate">Calibrate my baseline</button>
+      <button class="btn" data-action="drive">Drive mode</button>
+      <div class="row">
+        <button class="btn small" data-nav="history">History</button>
+        <button class="btn small" data-nav="settings">Settings</button>
+        <button class="btn small" data-nav="about">About</button>
+      </div>
+    </div>
+
+    <p class="fine">This is a self-awareness tool, not a breathalyzer or medical device.
+      A good score never means you are safe or legal to drive.</p>
+  </section>
+
+  <!-- INTRO (before a check) -->
+  <section id="screen-intro" class="screen">
+    <div class="card">
+      <h2 id="intro-title">Check</h2>
+      <p id="intro-body"></p>
+      <ol class="steps">
+        <li><b>Reaction:</b> tap the screen the instant it turns green (5 taps). Don't jump the gun.</li>
+        <li><b>Dodge:</b> drag your finger anywhere to steer the red square. Avoid the blue blocks and the black wall. Survive as long as you can (2 rounds).</li>
+      </ol>
+      <p class="fine">Hold the phone the way you normally would. Takes about a minute.</p>
+    </div>
+    <div class="stack">
+      <button class="btn primary" id="intro-go">Start</button>
+      <button class="btn" data-nav="home">Cancel</button>
+    </div>
+  </section>
+
+  <!-- REACTION TEST -->
+  <section id="screen-reaction" class="screen game">
+    <div id="reaction-pad" class="pad">
+      <div id="reaction-msg" class="pad-msg">Tap to begin</div>
+      <div id="reaction-sub" class="pad-sub"></div>
+    </div>
+  </section>
+
+  <!-- DODGE TEST -->
+  <section id="screen-dodge" class="screen game">
+    <div class="hud"><span id="dodge-round"></span><span id="dodge-time">0.0 s</span></div>
+    <canvas id="dodge-canvas"></canvas>
+    <div id="dodge-msg" class="overlay-msg"></div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="screen-result" class="screen">
+    <div id="result-card" class="card result"></div>
+    <div class="stack">
+      <button class="btn primary" data-action="drive">Drive mode</button>
+      <button class="btn" data-nav="home">Done</button>
+    </div>
+  </section>
+
+  <!-- DRIVE MODE -->
+  <section id="screen-drive" class="screen drive">
+    <div id="drive-banner" class="banner"></div>
+    <div class="gauges">
+      <div class="gauge">
+        <div class="g-label">Road limit</div>
+        <div class="g-value" id="g-limit">--</div>
+        <div class="g-unit" id="g-limit-src">looking up…</div>
+        <div class="row tight">
+          <button class="btn tiny" id="limit-down">−5</button>
+          <button class="btn tiny" id="limit-auto">Auto</button>
+          <button class="btn tiny" id="limit-up">+5</button>
+        </div>
+      </div>
+      <div class="gauge cap">
+        <div class="g-label">Your cap</div>
+        <div class="g-value" id="g-cap">--</div>
+        <div class="g-unit" id="g-cap-note"></div>
+      </div>
+    </div>
+    <div class="speed">
+      <div class="g-label">Speed</div>
+      <div class="s-value" id="g-speed">--</div>
+      <div class="g-unit" id="g-unit">mph</div>
+    </div>
+    <p class="fine" id="drive-gps">Waiting for GPS…</p>
+    <div class="stack">
+      <button class="btn" id="drive-stop">Stop</button>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section id="screen-history" class="screen">
+    <header class="top"><h2>History</h2></header>
+    <div id="history-list" class="list"></div>
+    <div class="stack"><button class="btn" data-nav="home">Back</button></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="screen-settings" class="screen">
+    <header class="top"><h2>Settings</h2></header>
+    <div class="card form">
+      <label>Speed units
+        <select id="set-units">
+          <option value="mph">mph</option>
+          <option value="kmh">km/h</option>
+        </select>
+      </label>
+      <label>A check stays valid for
+        <select id="set-valid">
+          <option value="1">1 hour</option>
+          <option value="2">2 hours</option>
+          <option value="4">4 hours</option>
+          <option value="8">8 hours</option>
+        </select>
+      </label>
+      <label>Alert when over my cap by
+        <select id="set-tolerance">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="set-sound"> Beep when over my cap</label>
+      <label class="check"><input type="checkbox" id="set-vibrate"> Vibrate when over my cap</label>
+    </div>
+    <div class="stack">
+      <button class="btn" id="reset-baseline">Reset baseline</button>
+      <button class="btn danger" id="clear-history">Clear all history</button>
+      <button class="btn" data-nav="home">Back</button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="screen-about" class="screen">
+    <div class="card">
+      <h2>How it works</h2>
+      <p>Each check measures your <b>reaction time</b> and how long you survive the
+        <b>dodge game</b> (based on the classic "Pilot Trainer" shape game).</p>
+      <p>You first <b>calibrate</b> by doing at least 3 checks while rested and sober.
+        Later checks are compared to that personal baseline, so a slow-but-steady
+        older driver isn't judged against a 20-year-old.</p>
+      <p>Your score sets a <b>speed cap</b> below the posted limit. At your normal
+        level the cap is 5 mph under the limit. Sharper than normal: no reduction.
+        Slower than normal: a bigger reduction, down to "don't drive."</p>
+      <p><b>Drive mode</b> reads your GPS speed and looks up the road's posted limit
+        from OpenStreetMap, then warns you when you go over your cap. It cannot
+        control your car.</p>
+      <h2>Important</h2>
+      <p>This app cannot detect alcohol or drugs and is not evidence of fitness to drive.
+        If you've been drinking or using, or you feel off, don't drive — no matter
+        what the score says. The tool is built so it can tell you to <i>not</i> drive,
+        but it can never clear you to drive.</p>
+      <p>Drive mode sends your approximate location to the public OpenStreetMap
+        Overpass service to look up speed limits. Everything else stays on your phone.</p>
+    </div>
+    <div class="stack"><button class="btn" data-nav="home">Back</button></div>
+  </section>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

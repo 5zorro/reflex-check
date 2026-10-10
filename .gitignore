@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local working notes for AI-assisted sessions (kept on this PC only)
+handoff.md

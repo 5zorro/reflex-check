@@ -1,0 +1,12 @@
+{
+  "name": "reflex-check",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pre-drive reaction & coordination check (PWA). No build step, no dependencies.",
+  "scripts": {
+    "start": "python -m http.server 8765",
+    "test": "node --test tools/logic.test.mjs",
+    "sim": "node tools/sim_dodge.mjs"
+  }
+}
