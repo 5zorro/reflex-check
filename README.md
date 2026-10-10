@@ -77,23 +77,41 @@ python -m http.server 8765
 
 Then open http://localhost:8765. Use a mouse to drag in the dodge game.
 
-## Put it on your phone
+## Install on your phone
 
-GPS and "install to home screen" only work over **HTTPS**, so the app needs to be hosted.
-Both of these are free:
+No app store needed. Open this link on your phone:
 
-- **Netlify Drop (easiest):** go to https://app.netlify.com/drop and drag the `ReflexCheck`
-  folder onto the page. You get an `https://….netlify.app` link. Open it on your phone.
-- **GitHub Pages:** push this folder to a GitHub repo, then Settings → Pages → deploy from the main branch.
+**https://5zorro.github.io/reflex-check/**
 
-On the phone, open the link, then:
-- **Android (Chrome):** menu ⋮ → *Add to Home screen* / *Install app*.
-- **iPhone (Safari):** Share → *Add to Home Screen*.
+Then add it to your home screen:
 
-It then opens full-screen like a normal app and the checks work offline.
+- **Android (Chrome):** tap the menu ⋮ → **Add to Home screen** (or **Install app**) → **Install**.
+- **iPhone (Safari only):** tap the Share button → **Add to Home Screen** → **Add**.
 
-To get it into the Play Store / App Store later, wrap it with
-[Capacitor](https://capacitorjs.com/) (see [openitems.md](openitems.md)).
+It now has its own icon, opens full-screen like a normal app, and the checks work offline.
+
+**First time:** tap **Calibrate my baseline** and do it 3 times while rested and sober
+(different days is best). Then use **Run check** whenever you want.
+
+**Drive mode** asks for location permission the first time. Allow it, or drive mode can't
+show your speed.
+
+**Updates:** new versions download on their own the next time you open the app while online.
+Your history and baseline stay on your phone and aren't affected.
+
+**Uninstall:** remove it like any app (long-press the icon). To wipe your history first, use
+Settings → **Clear all history** in the app.
+
+### Host your own copy
+
+The app is plain files, so any HTTPS host works (GPS and home-screen install need HTTPS):
+
+- **GitHub Pages:** fork this repo, then Settings → Pages → Deploy from a branch → `main` / root.
+- **Netlify Drop:** drag the folder onto https://app.netlify.com/drop.
+
+To get it into the Play Store / App Store later, it could be wrapped with
+[Capacitor](https://capacitorjs.com/) or packaged with [PWABuilder](https://www.pwabuilder.com/)
+(see [openitems.md](openitems.md)).
 
 ## Tests
 
