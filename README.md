@@ -12,8 +12,8 @@ x% kind of device.
 
 As only the "phone game" part is developed, ill describe that: 
 1 Take a one-minute check (establishes sober baseline and/or compares against sober baseline). 
-Minigame 1 is "reaction tap"
-Minigame 2 is "avoid the shapes and the walls for as long as you can"
+ - Minigame 1 is "reaction tap"
+ - Minigame 2 is "avoid the shapes and the walls for as long as you can"
 2 The app gives you a score highlighting how well you performed related to baseline. If you're 
 far off your normal, it tells you not to drive.
 
