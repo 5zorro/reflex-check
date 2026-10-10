@@ -1,17 +1,33 @@
 # Reflex Check
 
-A phone app that works like a "breathalyzer" for reaction time. Before you drive, you
-take a one-minute check. The app compares you to **your own** normal and gives you a
-speed cap below the posted limit. If you're far off your normal, it tells you not to drive.
+A phone game that works like a "breathalyzer" for reaction time. 
 
-It's built for anyone whose reactions might be off: older drivers, tired drivers, and
-people who've been drinking or using. It's based on the classic "Pilot Trainer" shape
-game ([echalk / edSLAP](https://www.edslap.com/amusements/Games/pilotTrainer/pilotTrainer.html),
-via [this Lemmy post](https://lemmy.ca/post/11276051)).
+It would be annoying as hell, but applying the categorical imperative to driving (if everyone 
+used this then I could trust that my fellow drivers were competent when they started the car).
+It would be like SSO which is currently used to annoy everyone but keep hacks down.
+
+My vision for this app: It is a game, and if you hook it up to a car with software/hardware, 
+then this could act like a objective external "you are dangerous, but still can use your car
+x% kind of device.
+
+As only the "phone game" part is developed, ill describe that: 
+1 Take a one-minute check (establishes sober baseline and/or compares against sober baseline). 
+Minigame 1 is "reaction tap"
+Minigame 2 is "avoid the shapes and the walls for as long as you can"
+2 The app gives you a score highlighting how well you performed related to baseline. If you're 
+far off your normal, it tells you not to drive.
+
+It's built for anyone whose reactions might be off: older drivers, tired drivers, people prone 
+to health flare ups, and people who've been drinking or using. It's based on the classic "Pilot 
+Trainer" shape game ([echalk / edSLAP](https://www.edslap.com/amusements/Games/pilotTrainer/pilotTrainer.html).
 
 > **Not a medical or legal device.** It can't detect alcohol or drugs. A good score
 > never means you're safe or legal to drive. The design is one-way: it can tell you
 > *not* to drive, but it can never clear you to drive.
+
+The idea is that a user is used to **their baseline**. A teenager has reaction and to spare, but
+has not the experience to have good judgement of road hazards as someone who is 60 years old. The
+60 year old has less reaction time, but has the judgement to make up the difference.
 
 ## What's in a check (~1 minute)
 
